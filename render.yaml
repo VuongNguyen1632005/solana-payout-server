@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: solana-payout-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: SOLANA_RPC_URL
+        sync: false
+      - key: MINT_ADDRESS
+        sync: false
+      - key: TOKEN_DECIMALS
+        value: 9
+      - key: PRIVATE_KEY
+        sync: false
+      - key: PAYOUT_API_KEY
+        sync: false
+      - key: ENABLE_MOCK_PAYOUT
+        value: false
